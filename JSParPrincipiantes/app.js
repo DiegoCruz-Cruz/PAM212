@@ -1,5 +1,13 @@
-let names = [1, 2, 3];
-
- for(let i = names.length - 1; i >= 0; i--) {
-    console.log(names[i]);
- }
+function greeting (person) {
+    console.log('Hello' + person);
+}
+greeting('Kara');
+greeting('Marcus');
+greeting('Connor');
+greeting('Kara');
+greeting('Kara');
+greeting('Kara');
+greeting('Kara');
+greeting('Kara');
+greeting('Kara');
+greeting('Kara');

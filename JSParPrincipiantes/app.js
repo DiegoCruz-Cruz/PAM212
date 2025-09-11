@@ -1,15 +1,10 @@
-let passwordBD = 'pepe123'
+let score = 70;
 
-let input = 'asdasdasdasd'
-
-let result = input == passwordBD;
-
-if (result == true) {
-    console.log('Login Correcto');
+if (score > 30) {
+    console.log('You need to practice more");
+} else if (score > 15) {
+|   console.log('Estas mejorando);
 }
-
-if(result == false) {
-    console.log('Login Incorrecto')
-}else {
-    console.log('Contraseña incorrecta');
+else {
+    console.log('You need to follow this tutorial')
 }

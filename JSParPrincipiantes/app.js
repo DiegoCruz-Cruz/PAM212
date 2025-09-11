@@ -1,13 +1,9 @@
-function greeting (person) {
-    console.log('Hello' + person);
+function add(n1, n2) {
+    console.log(n1 + n2);
 }
-greeting('Kara');
-greeting('Marcus');
-greeting('Connor');
-greeting('Kara');
-greeting('Kara');
-greeting('Kara');
-greeting('Kara');
-greeting('Kara');
-greeting('Kara');
-greeting('Kara');
+add(3, 2);
+add(100, 300);
+
+add(3, 2);
+add(100, 300);
+add(3123123123, 132123123);

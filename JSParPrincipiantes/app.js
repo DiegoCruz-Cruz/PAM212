@@ -1,7 +1,15 @@
 let passwordBD = 'pepe123'
 
-let input = 'pepe123'
+let input = 'asdasdasdasd'
 
 let result = input == passwordBD;
 
-console.log(result);
+if (result == true) {
+    console.log('Login Correcto');
+}
+
+if(result == false) {
+    console.log('Login Incorrecto')
+}else {
+    console.log('Contraseña incorrecta');
+}

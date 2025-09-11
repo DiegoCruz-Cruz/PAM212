@@ -1,12 +1,10 @@
-let numberOne = 60;
-let numberTwo = 100;
+let numberOne = 100;
+let numberTwo = 500;
 
-let result = numberOne + numberTwo;
-
-let name = 'John';
-let lastname = 'Carter';
-
-let completeName = name + ' ' + lastname;
+let result = numberOne > numberTwo;
+let result2 = numberOne == numberTwo;
+let result3 = numberOne != numberTwo;
 
 console.log(result)
-console.log(completeName)
+console.log(result2)
+console.log(result3)

@@ -1,10 +1,7 @@
-let numberOne = 100;
-let numberTwo = 500;
+let passwordBD = 'pepe123'
 
-let result = numberOne > numberTwo;
-let result2 = numberOne == numberTwo;
-let result3 = numberOne != numberTwo;
+let input = 'pepe123'
 
-console.log(result)
-console.log(result2)
-console.log(result3)
+let result = input == passwordBD;
+
+console.log(result);

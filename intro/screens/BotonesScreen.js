@@ -24,16 +24,4 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontStyle: 'italic',
   },
-  texto2: {
-    color: '#cf0d0dff',
-    fontSize: 40,
-    fontFamily: 'Courier',
-    fontWeight: '400',
-    textDecorationLine: 'underline',
-  },
-  contenedorBotones: {
-    marginTop: 15,
-    flexDirection: 'column',
-    gap: 20,
-  },
 });

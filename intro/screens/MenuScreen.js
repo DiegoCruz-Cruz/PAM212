@@ -2,6 +2,7 @@ import { Text, StyleSheet, View, Button } from 'react-native';
 import React, { useState } from 'react';
 import ContadorScreen from './ContadorScreen';
 import BotonesScreen from './BotonesScreen';
+import ScrollViewScreen from './ScrollViewScreen';
 
 export default function MenuScreen() {
     const [screen,setScreen]=useState('menu');
@@ -11,6 +12,8 @@ export default function MenuScreen() {
             return <ContadorScreen/>;
         case 'botones':
             return <BotonesScreen/>;
+        case 'scroll':
+            return <ScrollViewScreen />;
         case 'menu':
             default:
                 return (
@@ -21,7 +24,7 @@ export default function MenuScreen() {
                             <Button color='#ef9607ff' onPress={()=>setScreen('botones')}  title="Pract:Botones"/>
                             <Button color='#610dcfff' onPress={()=>setScreen('botones')}  title="Pract:TextInput"/>
                             <Button color='#cf0d0dff' onPress={()=>setScreen('botones')} title="Pract:ImageBackgroung"/>
-                            <Button color='#ef9607ff' onPress={()=>setScreen('botones')}  title="Pract:ScrollView"/>
+                            <Button color='#ef9607ff' onPress={()=>setScreen('scroll')}  title="Pract:ScrollView"/>
                             <Button color='#610dcfff' onPress={()=>setScreen('botones')}  title="Pract:ActivityIndicator"/>
                             <Button color='#cf0d0dff' onPress={()=>setScreen('botones')} title="Pract:FlatList"/>
                             <Button color='#ef9607ff' onPress={()=>setScreen('botones')}  title="Pract:Modal"/>
@@ -45,21 +48,15 @@ const styles = StyleSheet.create({
   },
   textoTitulo: {
     color: '#ffffffff',
-    fontSize: 70,
+    fontSize: 40,
     fontFamily: 'Times New Roman',
     fontWeight: 'bold',
     fontStyle: 'italic',
-  },
-  texto2: {
-    color: '#cf0d0dff',
-    fontSize: 40,
-    fontFamily: 'Courier',
-    fontWeight: '400',
-    textDecorationLine: 'underline',
+    textAlign: 'center',
   },
   contenedorBotones: {
-    marginTop: 15,
+    marginTop: 25,
     flexDirection: 'column',
-    gap: 20,
+    gap: 15,
   },
 });

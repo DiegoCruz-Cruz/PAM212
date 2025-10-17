@@ -1,12 +1,13 @@
 import { Text, StyleSheet, View, Button } from 'react-native';
 import React, { useState } from 'react';
 import ContadorScreen from './ContadorScreen';
-import BotonesScreen from './BotonesScreen';
+import BotonesScreen from './Botones/BotonesScreen';
+import Botones from './Botones/Botones';
 import TextScreen from './TextScreen';
 import ImageBackgroungScreen from './ImageBackgroungScreen';
 import ScrollViewScreen from './ScrollViewScreen';
 import ActivityIndicatorScreen from './ActivityIndicatorScreen';
-import FlatListSectionListScreen from './FLatListSectionListScreen';
+import FlatListSectionListScreen from './FlatListSectionListScreen';
 import ModalScreen from './ModalScreen';
 import BottomSheetScreen from './BottomSheetScreen';
 
@@ -18,6 +19,8 @@ export default function MenuScreen() {
             return <ContadorScreen/>;
         case 'botones':
             return <BotonesScreen/>;
+        case 'botoness':
+            return <Botones/>;
         case 'textInput':
             return <TextScreen/>;
         case 'imageBackgroung':
@@ -40,6 +43,7 @@ export default function MenuScreen() {
                         <View style={styles.contenedorBotones}>
                             <Button color='#cf0d0dff' onPress={()=>setScreen('contador')} title="Pract:Contador"/>
                             <Button color='#ef9607ff' onPress={()=>setScreen('botones')}  title="Pract:Botones"/>
+                            <Button color='#ef9607ff' onPress={()=>setScreen('botoness')}  title="Pract:Botones 2"/>
                             <Button color='#610dcfff' onPress={()=>setScreen('textInput')}  title="Pract:TextInput"/>
                             <Button color='#cf0d0dff' onPress={()=>setScreen('imageBackgroung')} title="Pract:ImageBackgroung"/>
                             <Button color='#ef9607ff' onPress={()=>setScreen('scroll')}  title="Pract:ScrollView"/>
@@ -50,11 +54,7 @@ export default function MenuScreen() {
                         </View>
                     </View>
                 )
-
     }
-
-
-
 }
 
 const styles = StyleSheet.create({

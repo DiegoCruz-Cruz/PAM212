@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-  },
+  },  
   content: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     padding: 25,

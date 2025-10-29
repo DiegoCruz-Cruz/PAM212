@@ -9,14 +9,11 @@ import {
 } from "react-native";
 import * as SplashScreen from "expo-splash-screen";
 
-SplashScreen.preventAutoHideAsync().catch(() => {});
-
 const { height } = Dimensions.get("window");
 
-export default function ImageBackgroundScreen() {
-  const [showMain, setShowMain] = useState(false); // controla si se muestra la pantalla principal
+export default function SplashScreenPro() {
+  const [showMain, setShowMain] = useState(false);
 
-  // Animaciones Splash
   const fadeLogo = useRef(new Animated.Value(0)).current;
   const scaleLogo = useRef(new Animated.Value(0.5)).current;
   const rotateLogo = useRef(new Animated.Value(0)).current;
@@ -24,56 +21,56 @@ export default function ImageBackgroundScreen() {
   const fadeOut = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
-    // Animación inicial del logo (fade + scale + rotación)
-    Animated.parallel([
-      Animated.timing(fadeLogo, {
-        toValue: 1,
-        duration: 1200,
-        useNativeDriver: false,
-      }),
-      Animated.spring(scaleLogo, {
-        toValue: 1,
-        friction: 5,
-        useNativeDriver: false,
-      }),
-      Animated.timing(rotateLogo, {
-        toValue: 1,
-        duration: 1200,
-        useNativeDriver: false,
-      }),
-    ]).start();
+    const startAnimation = async () => {
+      await SplashScreen.preventAutoHideAsync();
 
-    // Animación del texto (deslizamiento desde abajo)
-    Animated.timing(slideText, {
-      toValue: 0,
-      duration: 1000,
-      useNativeDriver: false,
-      delay: 800,
-    }).start();
+      Animated.parallel([
+        Animated.timing(fadeLogo, {
+          toValue: 1,
+          duration: 1200,
+          useNativeDriver: true,
+        }),
+        Animated.spring(scaleLogo, {
+          toValue: 1,
+          friction: 5,
+          useNativeDriver: true,
+        }),
+        Animated.timing(rotateLogo, {
+          toValue: 1,
+          duration: 1200,
+          useNativeDriver: true,
+        }),
+      ]).start();
 
-    // Después de 3 segundos: fade-out y mostrar pantalla principal
-    const timer = setTimeout(() => {
-      Animated.timing(fadeOut, {
+      Animated.timing(slideText, {
         toValue: 0,
-        duration: 800,
-        useNativeDriver: false,
-      }).start(() => {
-        SplashScreen.hideAsync()
-          .then(() => setShowMain(true))
-          .catch(console.warn);
-      });
-    }, 3000);
+        duration: 1000,
+        useNativeDriver: true,
+        delay: 800,
+      }).start();
 
-    return () => clearTimeout(timer);
+      const timer = setTimeout(async () => {
+        Animated.timing(fadeOut, {
+          toValue: 0,
+          duration: 800,
+          useNativeDriver: true,
+        }).start(async () => {
+          await SplashScreen.hideAsync();
+          setShowMain(true);
+        });
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    };
+
+    startAnimation();
   }, []);
 
-  // Interpolación de la rotación
   const rotateInterpolate = rotateLogo.interpolate({
     inputRange: [0, 1],
     outputRange: ["0deg", "10deg"],
   });
 
-  // Si ya terminó la animación, muestra la pantalla principal
   if (showMain) {
     return (
       <ImageBackground
@@ -82,16 +79,12 @@ export default function ImageBackgroundScreen() {
         resizeMode="cover"
       >
         <View style={styles.content}>
-          <Text style={styles.text}>¡Bienvenido a la Práctica 10!</Text>
-          <Text style={[styles.text, { fontSize: 18 }]}>
-            ImageBackground & SplashScreen
-          </Text>
+          <Text style={styles.text}>¡Bienvenido!</Text>
         </View>
       </ImageBackground>
     );
   }
 
-  // Splash animado
   return (
     <Animated.View style={[styles.container, { opacity: fadeOut }]}>
       <Animated.Image
@@ -110,7 +103,6 @@ export default function ImageBackgroundScreen() {
       >
         ¡ImageBackground & Splash Screen!
       </Animated.Text>
-      <View style={styles.loader} />
     </Animated.View>
   );
 }
@@ -118,7 +110,7 @@ export default function ImageBackgroundScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#6e0909ff",
+    backgroundColor: "#680909ff",
     justifyContent: "center",
     alignItems: "center",
   },
@@ -126,17 +118,17 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
     marginBottom: 5,
-  },
+  },  
   background: {
     flex: 1,
     width: "100%",
     height: "100%",
     justifyContent: "center",
     alignItems: "center",
-  },  
+  },
   content: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
-    padding: 25,
+    padding: 20,
     borderRadius: 10,
   },
   text: {
@@ -144,12 +136,5 @@ const styles = StyleSheet.create({
     fontSize: 24,
     marginBottom: 10,
     textAlign: "center",
-  },
-  loader: {
-    width: 60,
-    height: 6,
-    backgroundColor: "#fff",
-    borderRadius: 3,
-    marginTop: 15,
   },
 });

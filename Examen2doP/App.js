@@ -1,5 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView,  StyleSheet, Text, View, Image, Button } from 'react-native';
+import { useState, useEffect, useRef } from 'react' 
+
+import { ScrollView,  StyleSheet, Text, View, Image, Button, Alert, SectionList } from 'react-native';
+
+const categorias = [
+  { titulo: 'Primavera', data: ['Marzo', 'Abril', 'Mayo'],},
+  { titulo: 'Verano', data: ['Junio', 'Julio', 'Agosto'],},
+  { titulo: 'Otoño', data: ['Septiembre', 'Octubre', 'Noviembre'],},
+  { titulo: 'Invierno', data: ['Diciembre', 'Enero', 'Febrero'],},
+];
 
 const SimpleHeader = () => {
   return (
@@ -12,6 +21,7 @@ const SimpleHeader = () => {
 //  <>    =>
 
 export default function SimpleScrollView() {
+const [aceptarTerminos, setAceptarTerminos] = useState(false);
   return (
     <View style={styles.container}>
       <SimpleHeader />
@@ -20,22 +30,58 @@ export default function SimpleScrollView() {
         contentContainerStyle={styles.scrollContent}
       >
         <View style={styles.card}>
+          <Image 
+            source={require("C:/PAM212/Examen2doP/assets/midas.jpeg")} 
+            style={styles.graphImage} 
+          />
           <Text style={styles.subtitle}>!Midas regresa a la tienda¡</Text>
           <Text style={styles.fecha}>05 de noviembre del 2025</Text>
           <Text style={styles.descrip}>La legendaria skin de Midas regresará a la tienda a fortnite, después de tantas especulaciones acerca de su regreso, por fin los creadores de fortnite decidieron implementarlo en la tienda para su venta a todos los que puedan comprarla, esta es una excelente noticia para todos los jugadores.</Text>
-           
+          <Image 
+            source={require("C:/PAM212/Examen2doP/assets/jules.jpeg")} 
+            style={styles.graphImage} 
+          />
+          <Text style={styles.subtitle}>!Jules regresa a la tienda¡</Text>
+          <Text style={styles.fecha}>05 de noviembre del 2025</Text>
+          <Text style={styles.descrip}>La legendaria skin de Jules regresará a la tienda a fortnite, después de tantas especulaciones acerca de su regreso, por fin los creadores de fortnite decidieron implementarlo en la tienda para su venta a todos los que puedan comprarla, esta es una excelente noticia para todos los jugadores.</Text>
+          <Text style={styles.fecha}>Aceptar términos y condiciones</Text>
+              <SwitchButton 
+                value={aceptarTerminos}
+                onValueChange={setAceptarTerminos}
+              />
         </View>
 
         <View style={styles.card}>
+          <Image 
+            source={require("C:/PAM212/Examen2doP/assets/iP17.jpeg")} 
+            style={styles.graphImage} 
+          />
           <Text style={styles.subtitle}>!Apple iPhone 17 Pro Max de 256 GB Naranja cósmico¡</Text>
           <Text style={styles.fecha}>06 de noviembre del 2025</Text>
           <Text style={styles.descrip}>El iPhone más potente hasta la fecha. Nuestra mejor pantalla hasta la fecha con Ceramic Shield 2 en la parte frontal, el potente chip A19 Pro, cámaras traseras de 48 MP y la nueva cámara frontal Center Stage. Estructura unibody. La innovación hace la fuerza.</Text>
+          <Image 
+            source={require("C:/PAM212/Examen2doP/assets/renders.jpg")} 
+            style={styles.graphImage} 
+          />
+          <Text style={styles.subtitle}>!Renders del iPhone 17 Pro muestran cambios de diseño¡</Text>
+          <Text style={styles.fecha}>06 de noviembre del 2025</Text>
+          <Text style={styles.descrip}>Con la información que hay a día de hoy, se espera que la línea iPhone 17 de Apple que saldrá este año presente cambios importantes en todos los ámbitos. Lo más reciente que ha salido a la luz sobre dicho cambio (que proviene de dentro de la industria) es que el iPhone 17 Pro adoptará un diseño similar al que hemos visto en los teléfonos Google Pixel los últimos años.</Text>
         </View>
 
         <View style={styles.card}>
-          <Text style={styles.subtitle}>!Apple iPhone 17 Pro Max de 256 GB Naranja cósmico¡</Text>
-          <Text style={styles.fecha}>06 de noviembre del 2025</Text>
-          <Text style={styles.descrip}>!Soy una tarjeta¡</Text>
+          <Image 
+            source={require("C:/PAM212/Examen2doP/assets/hbo.jpeg")} 
+            style={styles.graphImage} 
+          />
+          <Text style={styles.subtitle}>!Netflix Max está con todo y su nueva oferta¡</Text>
+          <Text style={styles.fecha}>07 de noviembre del 2025</Text>
+          <Text style={styles.descrip}>El día de hoy la empresa de Netflix está regalando suscripciones a muchos usuarios nuevos, con tan solo registarte desde la web. Esto se debe a que cumplen sus 5 años desde su lanzamiento como plataforma de streaming multiplataforma, así que no dejes ir esta oportunidad.</Text>
+                    <Image 
+            source={require("C:/PAM212/Examen2doP/assets/netflix.png")} 
+            style={styles.graphImage} 
+          />
+          <Text style={styles.subtitle}>!HBO Max está con todo y su nueva oferta¡</Text>
+          <Text style={styles.fecha}>07 de noviembre del 2025</Text>
         </View>
 
       </ScrollView>
@@ -44,12 +90,12 @@ export default function SimpleScrollView() {
 } 
 
 const styles = StyleSheet.create({
-  container: {//agrega
+  container: {
     flex: 1,
   },
   header: {
     height: 120,
-    backgroundColor: '#181D31',
+    backgroundColor: '#7c0404ff',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 25,
@@ -69,6 +115,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
 
     marginVertical: 10,
+  },
+    graphImage: {
+    width: "90%",
+    height: 180,
+    resizeMode: "contain",
   },
   subtitle: {
     fontSize: 30,
@@ -129,4 +180,23 @@ const styles = StyleSheet.create({
     borderRadius: 40,
     marginBottom: 25,
   },
+
+    itemBox: {
+    backgroundColor: '#cf0d0dff',
+    padding: 20,
+    marginVertical: 5,
+    borderRadius: 8,
+  },
+  itemText: {
+    color: '#000000ff',
+    fontSize: 16,
+  },
+  sectionHeader: {
+    color: '#ef9607ff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 15,
+    marginBottom: 5,
+  },
+
 }); 

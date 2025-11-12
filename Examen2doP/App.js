@@ -18,10 +18,9 @@ const SimpleHeader = () => {
   );
 };
 
-//  <>    =>
 
 export default function SimpleScrollView() {
-const [aceptarTerminos, setAceptarTerminos] = useState(false);
+const [aceptarTerminos, setAceptarTerminos] = useState(false);  
   return (
     <View style={styles.container}>
       <SimpleHeader />
@@ -45,10 +44,7 @@ const [aceptarTerminos, setAceptarTerminos] = useState(false);
           <Text style={styles.fecha}>05 de noviembre del 2025</Text>
           <Text style={styles.descrip}>La legendaria skin de Jules regresará a la tienda a fortnite, después de tantas especulaciones acerca de su regreso, por fin los creadores de fortnite decidieron implementarlo en la tienda para su venta a todos los que puedan comprarla, esta es una excelente noticia para todos los jugadores.</Text>
           <Text style={styles.fecha}>Aceptar términos y condiciones</Text>
-              <SwitchButton 
-                value={aceptarTerminos}
-                onValueChange={setAceptarTerminos}
-              />
+
         </View>
 
         <View style={styles.card}>
@@ -113,7 +109,6 @@ const styles = StyleSheet.create({
     height: 700,
     backgroundColor: '#E6DDC4',
     marginLeft: 10,
-
     marginVertical: 10,
   },
     graphImage: {

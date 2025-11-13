@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View, Button } from 'react-native';
+import { ScrollView, Text, StyleSheet, View, Button } from 'react-native';
 import React, { useState } from 'react';
 import ContadorScreen from './ContadorScreen';
 import BotonesScreen from './Botones/BotonesScreen';

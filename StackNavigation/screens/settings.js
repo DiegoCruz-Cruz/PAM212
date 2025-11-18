@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-export default function Settings({ navigation }) {
+export default function Settings({ navigation   }) {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Pantalla de Configuración</Text>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Usuario | compraFacil</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="topbar">
+            <div>
+                <h2 id="title">Nuevo Usuario</h2>
+                <p class="subtitle" id="subtitle">Captura los datos del nuevo usuario</p>
+            </div>
+
+            <div class="topbar-actions">
+                <a class="btn" href="/usuarios.html">Volver</a>
+            </div>
+        </div>
+        
+        <section class="card">
+            <div class="card-body">
+                <form id="userForm" class="form">
+                    <div class="grid2">
+                        <div>
+                            <label for="nombre_usuario">Nombre(s)</label>
+                            <input id="nombre_usuario" class="input" type="text" required>
+
+                            <label for="apellido_p">Apellido Paterno</label>
+                            <input id="apellido_p" class="input" type="text" required>
+
+                            <label for="apellido_m">Apellido Materno</label>
+                            <input id="apellido_m" class="input" type="text">
+
+                            <label for="gmail_usuario">Correo Electrónico</label>
+                            <input id="gmail_usuario" class="input" type="email" required>
+                        </div>
+
+                        <div>
+                            <label for="id_rol">Rol</label>
+                            <select id="id_rol" class="input" required>
+                                <option value="">Cargando roles...</option>
+                            </select>
+
+                            <label for="id_departamento">Departamento</label>
+                            <select id="id_departamento" class="input" required>
+                                <option value="">Cargando departamentos...</option>
+                            </select>
+
+                            <label for="password_usuario">Contraseña <span class="hint">(Opcional en edición)</span></label>
+                            <input id="password_usuario" class="input" type="password" minlength="6">
+
+                            <div style="margin-top: 20px;">
+                                <button class="btn btn-primary" type="submit" id="saveBtn">Guardar Usuario</button>
+                                <p id="msg" class="status"></p>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/usuarios-form.js"></script>
+</body>
+</html>

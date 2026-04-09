@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos | CompraFacil</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="topbar">
+            <div>
+                <h2>Módulo Productos</h2>
+                <p class="subtitle">Listado de productos registrados en el sistema</p>
+            </div>
+            
+            <div class="topbar-actions">
+                <a class="btn" href="/dashboard.html">Volver</a>
+                <a class="btn btn-primary" href="/productos-form.html">+ Nuevo Producto</a>
+                <button id="logoutBtn" class="btn btn-danger" type="button">Cerrar sesión</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="card-body">
+                <div class="toolbar">
+                    <input type="text" id="search" class="input" placeholder="Buscar por SKU, nombre o categoría...">
+                    <button id="refreshBtn" class="btn">Actualizar</button>
+                </div>
+
+                <p id="status" class="status">Cargando productos del servidor...</p>
+
+                <div class="table-wrap">
+                    <table class="table" id="productsTable">
+                        <thead>
+                            <tr>
+                                <th>SKU</th>
+                                <th>Producto</th>
+                                <th>Precio</th>
+                                <th>Categoría</th>
+                                <th>Unidad</th>
+                                <th>Stock Mín.</th>
+                                <th style="width:180px">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/productos.js"></script>
+</body>
+</html>

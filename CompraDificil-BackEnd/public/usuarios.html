@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuarios | CompraFacil</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+</head>
+<body>
+
+    <div class="container">
+        <header class="topbar">
+            <div>
+                <h2>Módulo Usuarios</h2>
+                <p class="subtitle">Listado de usuarios registrados en el sistema</p>
+            </div>
+            
+            <div class="topbar-actions">
+                <a class="btn" href="/dashboard.html">Volver</a>
+                <a class="btn btn-primary" href="/usuarios-form.html">+ Nuevo Usuario</a>
+                <button id="logoutBtn" class="btn btn-danger" type="button">Cerrar sesión</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="card-body">
+                <div class="toolbar">
+                    <input type="text" id="search" class="input" placeholder="Buscar por usuario, rol o correo...">
+                    <button id="refreshBtn" class="btn">Actualizar</button>
+                </div>
+
+                <p id="status" class="status">Cargando datos del servidor...</p>
+
+                <div class="table-wrap">
+                    <table class="table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre Usuario</th>
+                                <th>Correo Usuario</th>
+                                <th>Rol</th>
+                                <th>Departamento</th>
+                                <th style="width:260px">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/usuarios.js"></script>
+</body>
+</html>

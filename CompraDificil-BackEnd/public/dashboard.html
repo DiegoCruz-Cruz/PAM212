@@ -3,82 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Panel | CompraFacil</title>
+    <title>Dashboard | CompraDifícil</title>
     <link rel="stylesheet" href="/css/dashboard.css">
 </head>
 <body>
     <div class="layout">
         <aside class="sidebar">
             <div class="brand">
-                <div class="brand__mark">CF</div>
+                <div class="brand__mark">CD</div>
                 <div>
-                    <div class="brand__name">compraFacil</div>
-                    <div class="brand__tag">Panel principal</div>
+                    <div class="brand__name">CompraDifícil</div>
+                    <div class="brand__tag" id="roleTag">Sistema Empresarial</div>
                 </div>
             </div>
 
-            <nav class="menu">
-                <a class="menu__item" href="/usuarios.html">Usuarios</a>
-                <a class="menu__item" href="/productos.html">Productos</a>
-                <a class="menu__item" href="/requisiciones.html">Requisiciones</a>
+            <nav class="menu" id="mainMenu">
+                <a href="dashboard.html" class="menu__item active">Dashboard</a>
+                <a href="sucursales.html" class="menu__item">Sucursales</a>
+                <a href="ventas.html" class="menu__item">Ventas</a>
             </nav>
 
             <div class="sidebar__footer">
-                <button id="logoutBtn" class="btn btn-danger" type="button">Cerrar</button>
+                <div class="user-info" id="userInfo">
+                    <div class="user-avatar"><span id="userInitial">U</span></div>
+                    <div class="user-details">
+                        <div class="user-name" id="userName">Usuario</div>
+                        <div class="user-role" id="userRole">Rol</div>
+                    </div>
+                </div>
+                <button id="logoutBtn" class="btn btn-danger" type="button">Cerrar sesión</button>
             </div>
         </aside>
 
         <main class="main">
             <header class="main__header">
                 <div>
-                    <h1>Dashboard</h1>
-                    <p class="muted" id="welcome">Cargando usuario...</p>
+                    <h1 id="pageTitle">Panel de Control</h1>
+                    <p class="muted" id="welcome">Bienvenido al sistema CompraDifícil 2026</p>
+                </div>
+                <div class="header__actions">
+                    <button class="btn btn-secondary" id="refreshBtn">Actualizar Datos</button>
                 </div>
             </header>
 
-            <section class="cards">
-                <div class="kpi kpi--process">
-                    <div class="kpi__title">En Proceso</div>
-                    <div class="kpi__value" id="kpiBorrador">0</div>
-                </div>
+            <div id="adminView" class="view-section">
+                <section class="cards">
+                    <div class="kpi kpi--info">
+                        <div class="kpi__title">Empleados Totales</div>
+                        <div class="kpi__value" id="kpiEmpleados">20</div>
+                    </div>
+                    <div class="kpi kpi--success">
+                        <div class="kpi__title">Productos en Catálogo</div>
+                        <div class="kpi__value" id="kpiProductos">150</div>
+                    </div>
+                    <div class="kpi kpi--warning">
+                        <div class="kpi__title">Stock Bajo</div>
+                        <div class="kpi__value" id="kpiStockBajo">5</div>
+                    </div>
+                    <div class="kpi kpi--process">
+                        <div class="kpi__title">Sucursales</div>
+                        <div class="kpi__value" id="kpiSucursales">9</div>
+                    </div>
+                </section>
 
-                <div class="kpi kpi--approved">
-                    <div class="kpi__title">Aprobadas</div>
-                    <div class="kpi__value" id="kpiAprobadas">0</div>
-                </div>
-
-                <div class="kpi kpi--rejected">
-                    <div class="kpi__title">Rechazadas</div>
-                    <div class="kpi__value" id="kpiRechazadas">0</div>
-                </div>
-            </section>
-
-            <section class="panel">
-                <div class="panel__head">
-                    <h2>Requisiciones por estatus</h2>
-                    <p class="muted" id="chartSubtitle">Cargando resumen...</p>
-                </div>
-
-                <div id="reqPieChart" class="chart"></div>
-            </section>
-
-            <section class="panel">
-                <div class="panel__head">
-                    <h2>Aprobadas por departamento</h2>
-                    <p class="muted" id="depSubtitle">Cargando...</p>
-                </div>
-                <div id="depPieChart" class="chart"></div>
-            </section>
-
-            <section class="panel">
-                <div class="panel__head">
-                    <h2>Aprobadas por mes (2026)</h2>
-                    <p class="muted" id="mesSubtitle">Cargando...</p>
-                </div>
-                <div id="mesChart" class="chart"></div>
-            </section>
+                <section class="panel">
+                    <div class="panel__head">
+                        <h2>Ventas por Sucursal</h2>
+                        <p class="muted">Análisis de ingresos por punto de venta</p>
+                    </div>
+                    <div id="sucursalChart" class="chart"></div>
+                </section>
+            </div>
         </main>
     </div>
+
 
     <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="/js/dashboard.js"></script>

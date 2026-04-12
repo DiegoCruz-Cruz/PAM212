@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucursales | CompraDifícil</title>
+    <link rel="stylesheet" href="/css/usuarios.css">
+    <style>
+        /* Ajustes específicos para alinearse con el branding oscuro */
+        .search-container { margin-bottom: 20px; display: flex; gap: 10px; }
+        .search-input { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border-cool); }
+        .badge-activa { background-color: #d4edda; color: #155724; padding: 4px 8px; border-radius: 6px; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="topbar">
+            <div>
+                <h2>Gestión de Sucursales</h2>
+                <p class="subtitle">Administración de puntos de venta CompraDifícil</p>
+            </div>
+            <div class="topbar-actions">
+                <a class="btn" href="/dashboard.html">Volver al Dashboard</a>
+                <button class="btn btn-primary" id="btnNuevaSucursal">+ Registrar Sucursal</button>
+            </div>
+        </header>
+
+        <section class="card">
+            <div class="card-body">
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nombre o ubicación...">
+                </div>
+
+                <div class="table-wrap">
+                    <table id="sucursalesTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre Sucursal</th>
+                                <th>Ubicación / Dirección</th>
+                                <th>Teléfono</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-sucursales">
+                            <tr>
+                                <td>1</td>
+                                <td>Sucursal Centro</td>
+                                <td>Av. Constituyentes 100, Qro.</td>
+                                <td>4421234567</td>
+                                <td><span class="badge-activa">Activa</span></td>
+                                <td class="actions">
+                                    <button class="btn btn-small">Editar</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="/js/utils/api.js"></script>
+    <script>
+        // Lógica básica para cerrar sesión unificada
+        document.getElementById('btnNuevaSucursal')?.addEventListener('click', () => {
+            alert('Funcionalidad para el rol Admin: Registrar nueva sucursal');
+        });
+    </script>
+</body>
+</html>

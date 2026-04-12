@@ -1,13 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('loginForm');
     const msg = document.getElementById('msg');
+    const submitBtn = document.getElementById('submitBtn');
 
     if (!form) return;
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        msg.textContent = 'Verificando...';
+        // Deshabilitar el botón durante la petición
+        submitBtn.disabled = true;
+
+        // Limpiar mensajes previos
+        msg.className = 'msg info';
+        msg.textContent = 'Verificando credenciales...';
         
         const correoValue = document.getElementById('usuario').value.trim();
         const contrasenaValue = document.getElementById('contrasena').value;
@@ -21,36 +27,65 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
                 body: JSON.stringify({ 
                     email: correoValue, 
-                    password_usuario: contrasenaValue 
+                    password_usuario: contrasenaValue
                 })
             });
 
             const data = await res.json();
 
             if (!res.ok) {
-                if (data.errors && data.errors.email) {
-                    msg.textContent = data.errors.email[0];
+                msg.className = 'msg error';
+                
+                // Mostrar errores de validación si existen
+                if (data.errors) {
+                    const primeraError = Object.values(data.errors)[0];
+                    msg.textContent = Array.isArray(primeraError) ? primeraError[0] : primeraError;
                 } else {
                     msg.textContent = data.message || 'Credenciales incorrectas.';
                 }
+                
+                submitBtn.disabled = false;
                 return;
             }
 
+            // Validar que se recibió el token
             if (!data.token) {
+                msg.className = 'msg error';
                 msg.textContent = 'Error: No se recibió el token del servidor.';
+                submitBtn.disabled = false;
                 return;
             }
 
+            // Guardar datos en localStorage
             localStorage.setItem('token', data.token);
-            msg.style.color = 'green';
-            msg.textContent = '¡Éxito! Redirigiendo...';
+            localStorage.setItem('userRole', data.rol);
+            localStorage.setItem('userEmail', data.email);
+            localStorage.setItem('userName', data.nombre);
+            localStorage.setItem('sucursal', data.sucursal);
+            localStorage.setItem('sucursal_id', data.sucursal_id);
 
+            // Mostrar mensaje de éxito
+            msg.className = 'msg success';
+            msg.textContent = `¡Bienvenido ${data.nombre}! Redirigiendo...`;
+
+            // Redirigir según el rol
             setTimeout(() => {
-                window.location.href = '/dashboard.html';
-            }, 1000);
+                // Puedes personalizar el dashboard según el rol
+                const roleDashboard = {
+                    'Admin': '/dashboard-admin.html',
+                    'Vendedor': '/dashboard-vendedor.html',
+                    'Analista': '/dashboard-analista.html'
+                };
+
+                const redirectUrl = roleDashboard[data.rol] || '/dashboard.html';
+                window.location.href = redirectUrl;
+            }, 1500);
 
         } catch (error) {
+            msg.className = 'msg error';
             msg.textContent = 'Error de conexión: ' + error.message;
+            submitBtn.disabled = false;
+            console.error('Error:', error);
         }
     });
 });

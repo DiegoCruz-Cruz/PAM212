@@ -4,46 +4,189 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Iniciar Sesión | CompraDifícil</title>
-    <link rel="stylesheet" href="/css/app.css">
+    <style>
+        /* ── reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { height: 100%; width: 100%; overflow: hidden; }
+
+        body {
+            font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+            color: #111827;
+            background: #081825;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .card {
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            max-height: 800px;
+            background: #fffaf4;
+            display: flex;
+            overflow: hidden;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ── panel lateral ── */
+        .card__side {
+            width: 300px;
+            flex-shrink: 0;
+            background: #1a1a2e;
+            padding: 40px 24px;
+            display: flex;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .brand-icon {
+            width: 50px; height: 50px;
+            background: #e94560;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 15px;
+        }
+        .brand-icon svg { width: 28px; height: 28px; fill: white; }
+        .brand-name { font-size: 20px; font-weight: 700; color: #f0f0f0; margin-bottom: 4px; }
+        .brand-sub  { font-size: 14px; color: #888; margin-bottom: 48px; }
+
+        .brand-info {
+            font-size: 13px;
+            color: #aaa;
+            line-height: 1.6;
+            margin-top: auto;
+        }
+
+        /* ── panel derecho (CONTENIDO) ── */
+        .card__main {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            background: #fffaf4;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .login-title { font-size: 32px; font-weight: 800; color: #111827; margin-bottom: 8px; }
+        .login-desc  { font-size: 16px; color: #6b7280; margin-bottom: 30px; }
+
+        .field { margin-bottom: 22px; width: 100%; }
+        .field label { display: block; font-size: 13px; color: #6b7280; margin-bottom: 8px; font-weight: 600; }
+
+        .field input {
+            width: 100%; height: 52px; padding: 0 16px;
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            background: #fff;
+            font-size: 16px;
+            outline: none;
+            transition: all .2s;
+        }
+        .field input:focus {
+            border-color: #e94560;
+            box-shadow: 0 0 0 4px rgba(233,69,96,0.1);
+        }
+
+        .submit-btn {
+            width: 100%; height: 56px; margin-top: 10px;
+            background: #e94560; border: none;
+            border-radius: 12px;
+            color: #fff; font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: all .2s;
+        }
+        .submit-btn:hover { background: #d63c58; transform: translateY(-2px); }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
+        .msg {
+            padding: 14px; border-radius: 10px;
+            font-size: 14px; margin-top: 20px;
+            display: none;
+        }
+        .msg.success { background: #eaf3de; color: #3b6d11; display: block; }
+        .msg.error   { background: #fcebeb; color: #a32d2d; display: block; }
+        .msg.info    { background: #e0f2ff; color: #0369a1; display: block; }
+
+        @media (max-width: 768px) {
+            .page { padding: 0; }
+            .card { border-radius: 0; flex-direction: column; }
+            .card__side { width: 100%; flex-direction: row; padding: 20px; height: auto; align-items: center; }
+            .brand-info { display: none; }
+            .card__main { padding: 40px 24px; }
+        }
+    </style>
 </head>
 <body>
     <main class="page">
         <section class="card">
-            <header class="card-header">
-                <div class="brand">
-                    <div class="brand__mark">CF</div>
-                    <div class="brand__text">
-                        <div class="brand__name">Compra Difícil</div>
-                        <div class="brand__tag">Acceso al sistema</div>
-                    </div>
+
+            <div class="card__side">
+                <div class="brand-icon">
+                    <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM5.17 5H3V3H1v2h2l3.6 7.59L5.25 15c-.16.28-.25.61-.25.95C5 17.1 5.9 18 7 18h14v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63H19c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1 1 0 0023.46 5z"/></svg>
                 </div>
-            </header>
+                <div class="brand-name">CompraDifícil</div>
+                <div class="brand-sub">Sistema Empresarial</div>
 
-            <form id="loginForm" class="form" novalidate>
-                <div class="field">
-                    <label for="usuario" class="field__label">Correo electrónico</label>
-                    <input type="email" id="usuario" name="usuario" class="field__input" 
-                    autocomplete="username" placeholder="ejemplo@gmail.com" required>
+                <div class="brand-info">
+                    Ingresa con tu cuenta empresarial para acceder al sistema.
                 </div>
+            </div>
 
-                <div class="field">
-                    <label for="contrasena" class="field__label">Contraseña</label>
-                    <input id="contrasena" class="field__input" type="password" 
-                    autocomplete="current-password" placeholder="•••••••••" required>
+            <div class="card__main">
+                <div class="form-container">
+                    <p class="login-title">Bienvenido</p>
+                    <p class="login-desc">Ingresa tus credenciales</p>
+
+                    <form id="loginForm" novalidate>
+                        <div class="field">
+                            <label for="usuario">Correo electrónico</label>
+                            <input 
+                                type="email" 
+                                id="usuario" 
+                                name="usuario" 
+                                placeholder="ejemplo@compradificil.com" 
+                                required
+                            >
+                        </div>
+
+                        <div class="field">
+                            <label for="contrasena">Contraseña</label>
+                            <input 
+                                type="password" 
+                                id="contrasena" 
+                                name="contrasena" 
+                                placeholder="Tu contraseña" 
+                                required
+                            >
+                        </div>
+
+                        <button type="submit" class="submit-btn" id="submitBtn">Iniciar sesión</button>
+                        <div class="msg" id="msg" aria-live="polite"></div>
+                    </form>
                 </div>
+            </div>
 
-                <button type="submit" class="btn btn--primary">Entrar</button>
-                <p id="msg" class="msg" aria-live="polite" style="color: red; margin-top: 10px;"></p>
-            </form>
-
-            <footer class="card__footer">
-                <small>© <span id="year"></span> compraDificil</small>
-            </footer>
         </section>
     </main>
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
+
     <script src="/js/login.js"></script>
 </body>
 </html>
